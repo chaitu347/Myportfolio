@@ -1,5 +1,5 @@
 import ironman from "../../assets/iamronman.mp4";
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from "react";
 import "./Header.css";
 
 const Header = () => {
@@ -7,29 +7,46 @@ const Header = () => {
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true; // Ensure muted on load for autoplay
+      video.play().catch((err) => {
+        console.warn("Autoplay error:", err);
+      });
     }
-  }, [isMuted]);
+  }, []);
 
   const toggleMute = () => {
-    setIsMuted(prev => !prev);
+    const video = videoRef.current;
+    if (video) {
+      const newMute = !isMuted;
+      setIsMuted(newMute);
+      video.muted = newMute;
+
+      if (!newMute) {
+        video.play().catch((err) =>
+          console.warn("Playback error after unmuting:", err)
+        );
+      }
+    }
   };
 
   return (
-    <div className="video-container">
+    <div className="video-wrapper ">
       <video
         ref={videoRef}
         className="background-video"
         autoPlay
         loop
         playsInline
+        muted
       >
         <source src={ironman} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      <div className="dark-overlay"></div>
       <button className="mute-button" onClick={toggleMute}>
-        {isMuted ? '🔇 Mute' : '🔊 Sound'}
+        {isMuted ? "🔇 Mute" : "🔊 Sound"}
       </button>
     </div>
   );

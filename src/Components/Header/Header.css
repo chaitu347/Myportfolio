@@ -1,23 +1,26 @@
 .video-container {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-}
-
-.background-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
   z-index: -1;
 }
 
-.mute-button {
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* Prevent video interaction */
+}
+
+/* Button styling */
+.mute-button {
+  position: fixed;
   top: 20px;
   right: 20px;
   font-size: 18px;
@@ -27,5 +30,15 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 10;
+}
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 0.4 = 40% darkness */
+  z-index: 0; /* Behind mute button */
+  pointer-events: none;
 }
