@@ -1,5 +1,7 @@
 import ironman from "../../assets/iamronman.mp4";
 import { useRef, useState, useEffect } from "react";
+import { BiSolidVolumeMute } from "react-icons/bi";
+import { GoUnmute } from "react-icons/go";
 import "./Header.css";
 
 const Header = () => {
@@ -46,7 +48,7 @@ const Header = () => {
       </video>
       <div className="dark-overlay"></div>
       <button className="mute-button" onClick={toggleMute}>
-        {isMuted ? "🔇 Mute" : "🔊 Sound"}
+        {isMuted ? "<BiSolidVolumeMute />" : "<GoUnmute />"}
       </button>
     </div>
   );
