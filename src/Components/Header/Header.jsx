@@ -43,7 +43,7 @@ const Header = () => {
         playsInline
         muted
       >
-        <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1747997386/Untitled_video_-_Made_with_Clipchamp_1_f4ejpm.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1747998167/Untitled_video_-_Made_with_Clipchamp_2_pn5bie.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="dark-overlay"></div>
