@@ -25,11 +25,11 @@
   right: 20px;
   font-size: 18px;
   background: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: grey;
   padding: 10px 15px;
-  border-width: 1px;
+  outline: none !important;
   border-radius: 100px;
-  border: 100px;
+  border-color: grey;
   cursor: pointer;
   z-index: 10;
 }
@@ -42,4 +42,7 @@
   background: rgba(0, 0, 0, 0.5); /* 0.4 = 40% darkness */
   z-index: 0; /* Behind mute button */
   pointer-events: none;
+}
+button {
+    border:none;
 }
