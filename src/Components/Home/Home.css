@@ -13,7 +13,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  
 
 }
 
@@ -109,7 +109,7 @@
 }
 
 .line-1.slide-in { transition-delay: 1s; }
-.line-2.slide-in { transition-delay: 8.5s; }
+.line-2.slide-in { transition-delay: 7.5s; }
 .line-3.slide-in { transition-delay: 5s; }
 .line-4.slide-in { transition-delay: 6s; }
 
@@ -149,20 +149,25 @@
   background-clip: text;
   margin-left: 1rem;
   position: relative;
+  padding-bottom: 8px; /* Increase padding to give space for underline */
+  overflow: visible !important;
+  /* Add these properties to ensure the pseudo-element is visible */
+  display: inline-block;
+  z-index: 1;
 }
 
 .world-text::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: 2px; /* Adjust position to be visible within padding */
   left: 0;
   width: 0;
   height: 2px;
-  background:  linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+  background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
   animation: underlineGrow 2s ease-out forwards;
   animation-delay: 5s;
+  z-index: 2; /* Ensure it's above other elements */
 }
-
 @keyframes underlineGrow {
   to { width: 100%; }
 }
@@ -292,12 +297,12 @@
 }
 
 .bar-1 {
-  width: 4rem;
+  width: 5rem;
   background:linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
 }
 
 .bar-2 {
-  width: 2rem;
+  width: 3rem;
   background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
 }
 
@@ -314,18 +319,19 @@
   z-index: 20;
   width: 3.5rem;
   height: 3.5rem;
+  outline:none;
   border-radius: 50%;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-width: 0px ;
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
   transform: translateY(-20px) scale(0.8);
 }
@@ -333,25 +339,25 @@
 .mute-button.button-appear {
   opacity: 1;
   transform: translateY(0) scale(1);
-  transition-delay: 5.5s;
+  transition-delay: 0.1s;
 }
 
 .mute-button:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  
   transform: scale(1.05);
 }
 
 .mute-button:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline: 0px solid rgba(255, 255, 255, 0.3);
   outline-offset: 2px;
 }
 
 .mute-icon,
 .unmute-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3.3rem;
+  height: 3.3rem;
   transition: all 0.3s ease;
 }
 
@@ -418,6 +424,7 @@
 @media (max-width: 1024px) {
   .hero-content {
     padding-left: 1.5rem;
+    
   }
   
   .welcome-text {

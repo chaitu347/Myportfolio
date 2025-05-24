@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import "./Header.css";
+import "./Home.css";
 
-const Header = () => {
+const Home = () => {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -29,6 +29,15 @@ const Header = () => {
 
   return (
     <div className="header-container">
+      <nav className="navbar">
+        <div className="profile-circle">
+          <img 
+            src="https://via.placeholder.com/60x60/333/fff?text=BP" 
+            alt="Profile" 
+            className="profile-image"
+          />
+        </div>
+      </nav>
       {/* Video Background */}
       <div className={`video-wrapper ${isVisible ? 'fade-in' : ''}`}>
         <video
@@ -131,4 +140,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Home;
