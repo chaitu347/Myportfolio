@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Home.css";
-import Profile from "../../assets/profile.jpg"; // Adjust the path as necessar
+
 
 const Home = () => {
   const videoRef = useRef(null);
