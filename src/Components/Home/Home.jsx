@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Home.css";
-
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
@@ -27,10 +28,12 @@ const Home = () => {
       video.muted = !isMuted;
     }
   };
+  
+  
 
   return (
     
-      <div  className="header-container">
+      <div id="home" className="header-container stack">
           <div className="profile-circle">
             <img 
               src="https://res.cloudinary.com/dnbnst2wn/image/upload/v1748097749/Screenshot_2025-05-24_201046_fp7zfy.png"
@@ -41,7 +44,7 @@ const Home = () => {
         <nav className="navbar">
           <div className="topnav">
               <a className="active" href="#home">Home</a>
-              <a href="#about">About</a>
+              <a href="#about" >About</a>
               <a href="#Skills">Skills</a>
               <a href="#Project">Project</a>
               <a href="#certifications">Certifications</a>
