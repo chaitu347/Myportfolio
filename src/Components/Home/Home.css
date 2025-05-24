@@ -147,7 +147,7 @@
 /* Hero Content Container */
 .hero-content {
   position: relative;
-  
+  padding-left: 5rem;
   display: flex;
   align-items: center;
   height: 100vh;
@@ -418,8 +418,8 @@
 
 .mute-icon,
 .unmute-icon {
-  width: 64px;
-  height: 64px;
+  width: 24px;
+  height: 24px;
   transition: all 0.3s ease;
   outline: none;
 }
