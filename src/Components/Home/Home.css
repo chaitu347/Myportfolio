@@ -153,7 +153,7 @@
   height: 100vh;
   
   
-  overflow-x: hidden;
+  
 }
 
 .text-container {
@@ -554,6 +554,9 @@
 @media (max-width: 480px) {
   .navbar{
     display:none;
+  }
+  .hero-content {
+    padding-right: 1rem;
   }
   .profile-circle {
     
