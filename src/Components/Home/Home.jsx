@@ -1,29 +1,46 @@
 import React, { useRef, useState, useEffect } from "react";
-import "./Home.css";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useIntersectionObserver } from "../useIntersectionObserver.jsx";
+import "./Home.css";
+import "../../App.css";
 gsap.registerPlugin(ScrollTrigger);
-const Home = () => {
+const Home = ({ isActiveSection = false }) => {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [sectionRef, isInView] = useIntersectionObserver();
 
   useEffect(() => {
     const video = videoRef.current;
+    
     if (video) {
-      video.muted = isMuted;
-      video.play().catch((err) => {
-        console.warn("Autoplay issue:", err);
-      });
+      if (isActiveSection) {
+        // Section is active - play and respect mute state
+        video.muted = isMuted;
+        video.play().catch((err) => {
+          console.warn("Autoplay issue:", err);
+        });
+      } else {
+        // Section is not active - pause and mute
+        video.pause();
+        video.muted = true;
+        setIsMuted(true); // Reset mute state
+      }
     }
 
     // Start animations after component mounts
-    setTimeout(() => setIsVisible(true), 300);
-  }, [isMuted]);
+    if (isActiveSection) {
+      setTimeout(() => setIsVisible(true), 300);
+    } else {
+      setIsVisible(false);
+    }
+  }, [isMuted, isActiveSection]);
 
   const toggleMute = () => {
     const video = videoRef.current;
-    if (video) {
+    if (video && isActiveSection) {
       setIsMuted(!isMuted);
       video.muted = !isMuted;
     }
@@ -32,8 +49,8 @@ const Home = () => {
   
 
   return (
-    
-      <div id="home" className="header-container stack">
+    <section ref={sectionRef} id="home" className="header-container stack min-h-screen   bg-gradient-to-br from-blue-50 to-indigo-100 transition-all duration-1000">
+      <div >
           <div className="profile-circle">
             <img 
               src="https://res.cloudinary.com/dnbnst2wn/image/upload/v1748097749/Screenshot_2025-05-24_201046_fp7zfy.png"
@@ -53,11 +70,11 @@ const Home = () => {
           </div>
         </nav>
         {/* Video Background */}
-        <div className={`video-wrapper ${isVisible ? 'fade-in' : ''}`}>
+        <div className={`video-wrapper ${isInView ? 'fade-in' : ''}`}>
           <video
             ref={videoRef}
             className="background-video"
-            autoPlay
+            autoPlay={isActiveSection}
             loop
             playsInline
             muted={isMuted}
@@ -74,12 +91,13 @@ const Home = () => {
         <div className="hero-content">
           <div className="text-container">
             {/* Line 1 - Welcome */}
-            <div className={`text-line line-1 ${isVisible ? 'slide-in' : ''}`}>
+            <div className={` text-line line-1 ${isInView ? 'slide-in' : ''}`}>
+             
               <h1 className="welcome-text">WELCOME TO</h1>
             </div>
 
             {/* Line 2 - Name */}
-            <div className={`text-line line-2 ${isVisible ? 'slide-in' : ''}`}>
+            <div className={`text-line line-2 ${isInView ? 'slide-in' : ''}`}>
               <h1 className="name-text">
                 BHARGAV'S
                 <span className="world-text">WORLD</span>
@@ -87,12 +105,12 @@ const Home = () => {
             </div>
 
             {/* Line 3 - Your Next */}
-            <div className={`text-line line-3 ${isVisible ? 'slide-in' : ''}`}>
+            <div className={`text-line line-3 ${isInView ? 'slide-in' : ''}`}>
               <h2 className="your-next-text">YOUR NEXT</h2>
             </div>
 
             {/* Line 4 - Full Stack Developer */}
-            <div className={`text-line line-4 ${isVisible ? 'slide-in' : ''}`}>
+            <div className={`text-line line-4 ${isInView ? 'slide-in' : ''}`}>
               <h2 className="developer-text">
                 <span className="fullstack-text">FULL STACK</span>
                 <span className="developer-word">DEVELOPER</span>
@@ -100,14 +118,14 @@ const Home = () => {
             </div>
 
             {/* Subtitle */}
-            <div className={`subtitle-container ${isVisible ? 'fade-up' : ''}`}>
+            <div className={`subtitle-container  ${isInView ? 'fade-up' : ''}`}>
               <p className="hero-subtitle">
                 Crafting impactful digital experiences with elegant code and innovative solutions
               </p>
             </div>
 
             {/* Decorative Elements */}
-            <div className={`decorative-bars ${isVisible ? 'fade-up' : ''}`}>
+            <div className={`decorative-bars ${isInView ? 'fade-up' : ''}`}>
               <div className="bar bar-1"></div>
               <div className="bar bar-2"></div>
               <div className="bar bar-3"></div>
@@ -120,6 +138,7 @@ const Home = () => {
           className={`mute-button ${isVisible ? 'button-appear' : ''}`}
           onClick={toggleMute}
           aria-label={isMuted ? "Unmute video" : "Mute video"}
+          disabled={!isActiveSection}
         >
           {isMuted ? (
             <svg className="mute-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -150,7 +169,7 @@ const Home = () => {
           <div className={`particle particle-12 ${isVisible ? 'particle-animate' : ''}`}></div>
         </div>
       </div>
-      
+    </section>
       
   );
 };

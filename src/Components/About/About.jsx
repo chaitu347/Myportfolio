@@ -6,12 +6,15 @@ import { ScrollTrigger } from "gsap/all";
 import BlurText from "./BlurText.jsx";
 import GradientText from "./GradientText";
 import "./About.css";
+import { useIntersectionObserver } from "../useIntersectionObserver.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
+
 const About = () => {
+  const [sectionRef, isInView] = useIntersectionObserver();
   return (
-    <section id="about" className="h-dvh w-screen overflow-x-hidden stack">
+    <section ref={sectionRef}  id="about" className="h-dvh w-screen overflow-x-hidden stack">
       <div className="stacking-section h-[100%] w-[100%] bg-carbon-mist flex flex-col xl:flex-row items-center justify-center">
         {/* left part */}
         <div className="w-[100%] h-[50%] lg:w-[50%] lg:h-[100%] flex flex-col items-center justify-end">
@@ -79,7 +82,7 @@ const About = () => {
 
             {/* whole about me text */}
             <div className="flex-col items-start justify-start mt-10 h-[70%] pr-5">
-              <p className="font-robert-medium text-sm sm:text-2xl text-metallic-gray">
+              <p className="font-robert-medium text-sm sm:text-2xl text-metallic-gray" >
                 Namaste, I'm{" "}
                 <span className="text-blue-tint">Vishvjeet Rana</span> — a Full
                 Stack Web Developer who enjoys building web applications with
