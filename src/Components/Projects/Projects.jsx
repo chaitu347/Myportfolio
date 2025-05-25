@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useIntersectionObserver } from "../useIntersectionObserver.jsx";
-import "./Home.css";
+import "./Projects.css";
 import "../../App.css";
+
 gsap.registerPlugin(ScrollTrigger);
-const Home = ({ isActiveSection = false }) => {
+
+const Projects = ({ isActiveSection = false }) => {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -45,30 +46,13 @@ const Home = ({ isActiveSection = false }) => {
       video.muted = !isMuted;
     }
   };
-  
-  
 
   return (
-    <section ref={sectionRef} id="home" className="header-container stack min-h-screen   bg-gradient-to-br from-blue-50 to-indigo-100 transition-all duration-1000">
-      <div >
-          <div className="profile-circle">
-            <img 
-              src="https://res.cloudinary.com/dnbnst2wn/image/upload/v1748097749/Screenshot_2025-05-24_201046_fp7zfy.png"
-              alt="Profile" 
-              className="profile-image"
-            />
-          </div>
-        <nav className="navbar">
-          <div className="topnav">
-              <a className="active" href="#home">Home</a>
-              <a href="#about" >About</a>
-              <a href="#skills">Skills</a>
-              <a href="#projects">Project</a>
-              <a href="#certifications">Certifications</a>
-              <a href="#achievements">Achievements</a>
-              <a href="#contact us">Contact us</a>
-          </div>
-        </nav>
+    <section ref={sectionRef} id="projects" className="skills-container stack min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 transition-all duration-1000">
+      <div>
+        
+        
+
         {/* Video Background */}
         <div className={`video-wrapper ${isInView ? 'fade-in' : ''}`}>
           <video
@@ -79,7 +63,7 @@ const Home = ({ isActiveSection = false }) => {
             playsInline
             muted={isMuted}
           >
-            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748165312/Untitled_video_-_Made_with_Clipchamp_3_dejeej.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748124736/Untitled_video_-_Made_with_Clipchamp_5_kwuw3e.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Gradient Overlays */}
@@ -87,51 +71,8 @@ const Home = ({ isActiveSection = false }) => {
           <div className="gradient-overlay-top"></div>
         </div>
 
-        {/* Hero Content */}
-        <div className="hero-content">
-          <div className="text-container">
-            {/* Line 1 - Welcome */}
-            <div className={` text-line line-1 ${isInView ? 'slide-in' : ''}`}>
-             
-              <h1 className="welcome-text">WELCOME TO</h1>
-            </div>
-
-            {/* Line 2 - Name */}
-            <div className={`text-line line-2 ${isInView ? 'slide-in' : ''}`}>
-              <h1 className="name-text">
-                BHARGAV'S
-                <span className="world-text">WORLD</span>
-              </h1>
-            </div>
-
-            {/* Line 3 - Your Next */}
-            <div className={`text-line line-3 ${isInView ? 'slide-in' : ''}`}>
-              <h2 className="your-next-text">YOUR NEXT</h2>
-            </div>
-
-            {/* Line 4 - Full Stack Developer */}
-            <div className={`text-line line-4 ${isInView ? 'slide-in' : ''}`}>
-              <h2 className="developer-text">
-                <span className="fullstack-text">FULL STACK</span>
-                <span className="developer-word">DEVELOPER</span>
-              </h2>
-            </div>
-
-            {/* Subtitle */}
-            <div className={`subtitle-container  ${isInView ? 'fade-up' : ''}`}>
-              <p className="hero-subtitle">
-                Crafting impactful digital experiences with elegant code and innovative solutions
-              </p>
-            </div>
-
-            {/* Decorative Elements */}
-            <div className={`decorative-bars ${isInView ? 'fade-up' : ''}`}>
-              <div className="bar bar-1"></div>
-              <div className="bar bar-2"></div>
-              <div className="bar bar-3"></div>
-            </div>
-          </div>
-        </div>
+        {/* Skills Content */}
+        
 
         {/* Mute/Unmute Button */}
         <button
@@ -170,8 +111,7 @@ const Home = ({ isActiveSection = false }) => {
         </div>
       </div>
     </section>
-      
   );
 };
 
-export default Home;
+export default Projects;
