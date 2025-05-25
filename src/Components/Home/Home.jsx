@@ -62,10 +62,9 @@ const Home = () => {
             playsInline
             muted={isMuted}
           >
-            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1747998167/Untitled_video_-_Made_with_Clipchamp_2_pn5bie.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748165312/Untitled_video_-_Made_with_Clipchamp_3_dejeej.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          
           {/* Gradient Overlays */}
           <div className="gradient-overlay-left"></div>
           <div className="gradient-overlay-top"></div>
