@@ -62,7 +62,7 @@ const Home = ({ isActiveSection = false }) => {
           <div className="topnav">
               <a className="active" href="#home">Home</a>
               <a href="#about" >About</a>
-              <a href="#Skills">Skills</a>
+              <a href="#skills">Skills</a>
               <a href="#Project">Project</a>
               <a href="#certifications">Certifications</a>
               <a href="#achievements">Achievements</a>

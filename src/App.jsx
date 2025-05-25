@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Home from './Components/Home/Home.jsx'
 import About from './Components/About/About.jsx'
+import Skills from './Components/Skills/Skills.jsx'
 
 function App() {
   const [section, setSection] = useState('home');
@@ -55,7 +56,7 @@ function App() {
       <main className="transition-all duration-700">
         <Home isActiveSection={activeSection === 'home'} />
         <About />
-        
+        <Skills isActiveSection={activeSection === 'skills'} />
       </main>
     </div>
   )
