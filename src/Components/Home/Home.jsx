@@ -79,7 +79,7 @@ const Home = ({ isActiveSection = false }) => {
             playsInline
             muted={isMuted}
           >
-            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748165312/Untitled_video_-_Made_with_Clipchamp_3_dejeej.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748214392/Untitled_Video_-_Made_With_Clipchamp_3_p90t8e.mkv" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Gradient Overlays */}
