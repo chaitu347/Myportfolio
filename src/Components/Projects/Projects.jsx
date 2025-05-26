@@ -63,7 +63,7 @@ const Projects = ({ isActiveSection = false }) => {
             playsInline
             muted={isMuted}
           >
-            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748264944/Untitled_--_hcfno6.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748263479/v3_gd8jnj.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Gradient Overlays */}
