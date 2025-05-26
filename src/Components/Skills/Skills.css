@@ -142,7 +142,10 @@
   );
   z-index: 2;
 }
-
+.heading{
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
 /* Skills Content Container */
 .skills-content {
   position: relative;

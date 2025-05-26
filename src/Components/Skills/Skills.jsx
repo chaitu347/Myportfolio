@@ -63,7 +63,7 @@ const Skills = ({ isActiveSection = false }) => {
             playsInline
             muted={isMuted}
           >
-            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748260519/Untitled_Video_-_Made_With_Clipchamp_40---_unmbal.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748091379/Untitled_video_-_Made_with_Clipchamp_4_yacutu.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Gradient Overlays */}
@@ -72,7 +72,9 @@ const Skills = ({ isActiveSection = false }) => {
         </div>
 
         {/* Skills Content */}
-        
+        <div>
+          <h1 className="Heading">Skills</h1>
+        </div>
 
         {/* Mute/Unmute Button */}
         <button
