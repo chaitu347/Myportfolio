@@ -64,7 +64,7 @@ const Home = ({ isActiveSection = false }) => {
               <a href="#about" >About</a>
               <a href="#skills">Skills</a>
               <a href="#projects">Project</a>
-              <a href="#certifications">Certifications</a>
+              <a href="#footer">Footer</a>
               <a href="#achievements">Achievements</a>
               <a href="#contact us">Contact us</a>
           </div>

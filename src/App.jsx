@@ -4,6 +4,7 @@ import Home from './Components/Home/Home.jsx'
 import About from './Components/About/About.jsx'
 import Skills from './Components/Skills/Skills.jsx'
 import Projects from './Components/Projects/Projects.jsx'
+import Footer from './Components/Footer/Footer.jsx'
 
 function App() {
   const [section, setSection] = useState('home');
@@ -12,7 +13,7 @@ function App() {
   useEffect(() => {
     // Function to handle section navigation
     const handleSectionChange = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'certifications', 'achievements', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'footer', 'achievements', 'contact'];
       
       // Check which section is currently in view
       let currentSection = 'home';
@@ -59,6 +60,7 @@ function App() {
         <About />
         <Skills isActiveSection={activeSection === 'skills'} />
         <Projects isActiveSection={activeSection === 'projects'} />
+        <Footer  />
         {/* Add other sections here as needed */}
       </main>
     </div>
