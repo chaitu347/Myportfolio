@@ -63,7 +63,7 @@ const Projects = ({ isActiveSection = false }) => {
             playsInline
             muted={isMuted}
           >
-            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748124736/Untitled_video_-_Made_with_Clipchamp_5_kwuw3e.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/dnbnst2wn/video/upload/v1748263479/v3_gd8jnj.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Gradient Overlays */}
