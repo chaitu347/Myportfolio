@@ -37,12 +37,12 @@ const Projects = ({ isActiveSection = false }) => {
 
     // Start animations after component mounts
      if (isActiveSection && !hasAnimated) {
-      setTimeout(() => setIsVisible(true),500);
+      setTimeout(() => setIsVisible(true),434);
       // Show carousel after 3 seconds and mark as animated
       setTimeout(() => {
         setShowCarousel(true);
         setHasAnimated(true);
-      }, 15600);
+      }, 15627);
     } else if (isActiveSection && hasAnimated) {
       // If already animated, show immediately without animation
       setIsVisible(true);

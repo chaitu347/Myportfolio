@@ -72,9 +72,7 @@ const Skills = ({ isActiveSection = false }) => {
         </div>
 
         {/* Skills Content */}
-        <div>
-          <h1 className="Heading">Skills</h1>
-        </div>
+       
 
         {/* Mute/Unmute Button */}
         <button
