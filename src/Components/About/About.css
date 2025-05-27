@@ -3,3 +3,8 @@
   top: 0;
   
 }
+.profile-pic{
+  height: 90%;
+  width: 50%;
+  background-size: cover;
+}

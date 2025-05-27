@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useIntersectionObserver } from "../useIntersectionObserver.jsx";
+import Carousel from "./Carousel"; // Import your Carousel component
+
 import "./Projects.css";
 import "../../App.css";
 
@@ -10,7 +12,9 @@ gsap.registerPlugin(ScrollTrigger);
 const Projects = ({ isActiveSection = false }) => {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [showCarousel, setShowCarousel] = useState(false);
   const [sectionRef, isInView] = useIntersectionObserver();
 
   useEffect(() => {
@@ -32,13 +36,22 @@ const Projects = ({ isActiveSection = false }) => {
     }
 
     // Start animations after component mounts
-    if (isActiveSection) {
-      setTimeout(() => setIsVisible(true), 300);
+     if (isActiveSection && !hasAnimated) {
+      setTimeout(() => setIsVisible(true),500);
+      // Show carousel after 3 seconds and mark as animated
+      setTimeout(() => {
+        setShowCarousel(true);
+        setHasAnimated(true);
+      }, 15600);
+    } else if (isActiveSection && hasAnimated) {
+      // If already animated, show immediately without animation
+      setIsVisible(true);
+      setShowCarousel(true);
     } else {
       setIsVisible(false);
+      setShowCarousel(false);
     }
   }, [isMuted, isActiveSection]);
-
   const toggleMute = () => {
     const video = videoRef.current;
     if (video && isActiveSection) {
@@ -50,9 +63,6 @@ const Projects = ({ isActiveSection = false }) => {
   return (
     <section ref={sectionRef} id="projects" className="skills-container stack min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 transition-all duration-1000">
       <div>
-        
-        
-
         {/* Video Background */}
         <div className={`video-wrapper ${isInView ? 'fade-in' : ''}`}>
           <video
@@ -71,8 +81,19 @@ const Projects = ({ isActiveSection = false }) => {
           <div className="gradient-overlay-top"></div>
         </div>
 
-        {/* Skills Content */}
-        
+        {/* Projects Title */}
+        <div className={`projects-header ${isVisible ? 'fade-in' : ''}`}>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 text-center">
+            My Projects
+          </h2>
+        </div>
+
+        {/* Carousel Component - Only renders after 10 seconds */}
+        {showCarousel && (
+          <div className="carousel-container carousel-slide-left w-full   relative z-10 px-8 pb-8">
+            <Carousel />
+          </div>
+        )}
 
         {/* Mute/Unmute Button */}
         <button

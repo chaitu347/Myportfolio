@@ -15,6 +15,7 @@ const Footer = ({ isActiveSection = false }) => {
   const [isMuted, setIsMuted] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [sectionRef, isInView] = useIntersectionObserver();
+  
 
   useEffect(() => {
     const video = videoRef.current;
@@ -50,6 +51,40 @@ const Footer = ({ isActiveSection = false }) => {
     }
   };
 
+
+const TypewriterEffect = ({ 
+  text = "Welcome to our amazing website!", 
+  speed = 100, 
+  showCursor = false,
+  className = "",
+  onComplete = null 
+}) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    if (displayText.length < text.length) {
+      const timer = setTimeout(() => {
+        setDisplayText(text.slice(0, displayText.length + 1));
+      }, speed);
+      return () => clearTimeout(timer);
+    } else {
+      setIsComplete(true);
+      if (onComplete) onComplete();
+    }
+  }, [displayText, text, speed, onComplete]);
+  return (
+    <div className={`inline-block ${className}`}>
+      <span className="">
+        {displayText}
+        {showCursor && <span className="ml-1 animate-pulse">|</span>}
+      </span>
+    </div>
+  );
+};
+
+
+
   return (
     <section ref={sectionRef} id="footer" className="footer-container h-dvh w-screen overflow-x-hidden stack">
        <div className="h-full w-full  flex items-center justify-center">
@@ -58,7 +93,11 @@ const Footer = ({ isActiveSection = false }) => {
           {/* the main text */}
           <div className="h-[60%] w-[80%] flex flex-col items-center justify-center pt-15 gap-5">
             <p className="font-robert-small text-8xl sm:text-9xl font-extrabold text-[#50d71e]">
-             What Next...
+             <TypewriterEffect 
+                text="What Next..."
+                speed={80}
+                className=""
+              />
             </p>
             <p className="font-robert-medium text-[#f79d00] text-3xl sm:text-6xl font-bold">
              Looking For a Creative Developer?
