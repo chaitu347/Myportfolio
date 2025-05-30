@@ -183,7 +183,7 @@ const Projects = ({ isActiveSection = false }) => {
   
   // Animation thresholds
   const VISIBILITY_THRESHOLD = 434;
-  const CAROUSEL_THRESHOLD = 15437;
+  const CAROUSEL_THRESHOLD = 15457;
 
   // NEW: Function to update accumulated time and check thresholds
   const updateTiming = () => {
