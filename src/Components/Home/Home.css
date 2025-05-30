@@ -521,6 +521,34 @@
   }
 }
 
+@media (max-width: 1700px) {
+  .hero-content {
+    padding-left: 1.5rem;
+    
+  }
+  
+  .welcome-text {
+    font-size: 1.5rem;
+  }
+  
+  .name-text {
+    font-size: 3rem;
+  }
+  
+  .your-next-text {
+    font-size: 1.5rem;
+  }
+  
+  .developer-text {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+ 
+}
+
 @media (max-width: 768px) {
   .hero-content {
     padding-left: 1rem;
