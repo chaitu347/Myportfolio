@@ -5,6 +5,7 @@ import About from './Components/About/About.jsx'
 import Skills from './Components/Skills/Skills.jsx'
 import Projects from './Components/Projects/Projects.jsx'
 import Footer from './Components/Footer/Footer.jsx'
+import ContactUs from './Components/ContactUs/ContactUs.jsx'
 
 function App() {
   const [section, setSection] = useState('home');
@@ -60,6 +61,8 @@ function App() {
         <About />
         <Skills isActiveSection={activeSection === 'skills'} />
         <Projects isActiveSection={activeSection === 'projects'} />
+        <ContactUs isActiveSection={activeSection === 'contact'} />
+        {/* Add other sections like Achievements, etc. if needed */}
         <Footer  />
         {/* Add other sections here as needed */}
       </main>

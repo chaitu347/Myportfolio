@@ -1,0 +1,50 @@
+.contact-container{
+  background-image:url("https://res.cloudinary.com/dnbnst2wn/image/upload/v1748612984/Screenshot_2025-05-27_015724_crkxoc.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+
+}
+
+
+
+
+
+.gradient-overlay-left-footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7) 100%,
+    rgba(0, 0, 0, 0.4) 100%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.gradient-overlay-top-footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 100%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 2;
+}
+.stack {
+  position: sticky;
+  top: 0;
+}
+.socialmedia{
+  z-index: 13;
+}
