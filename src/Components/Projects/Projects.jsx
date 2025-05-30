@@ -3,19 +3,205 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useIntersectionObserver } from "../useIntersectionObserver.jsx";
 import Carousel from "./Carousel"; // Import your Carousel component
-
+import GradientText from "../About/GradientText";
 import "./Projects.css";
 import "../../App.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// DynamicTypewriter Component
+const DynamicTypewriter = ({
+  sentences = [
+    "Welcome to our amazing website!"
+  ],
+  finalSentence = "",
+  typeSpeed = 100,
+  deleteSpeed = 2,
+  pauseTime = 2000,
+  cycleCount = 1,
+  comebackDelay = 3000,
+  className = "typewriter-text",
+  isVisible = true,
+  isPaused = false // Pause control
+}) => {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [completedSentences, setCompletedSentences] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+  const [phase, setPhase] = useState('initial');
+  const [componentVisible, setComponentVisible] = useState(false);
+  
+  // NEW: Simplified timing approach
+  const animationStateRef = useRef({
+    timeoutId: null,
+    isPaused: false
+  });
+
+  useEffect(() => {
+    if (isVisible) {
+      setComponentVisible(true);
+    }
+  }, [isVisible]);
+
+  // NEW: Handle pause/resume
+  useEffect(() => {
+    animationStateRef.current.isPaused = isPaused;
+    
+    if (isPaused && animationStateRef.current.timeoutId) {
+      clearTimeout(animationStateRef.current.timeoutId);
+      animationStateRef.current.timeoutId = null;
+    } else if (!isPaused && componentVisible && (phase === 'initial' || phase === 'comeback')) {
+      // Resume animation
+      animateText();
+    }
+  }, [isPaused]);
+
+  const animateText = () => {
+    if (animationStateRef.current.isPaused) return;
+    if (!componentVisible && phase !== 'waiting') return;
+
+    const currentSentence = phase === 'comeback' ? finalSentence : sentences[currentIndex];
+    
+    if (isDeleting) {
+      setDisplayText(currentSentence.substring(0, displayText.length - 1));
+    } else {
+      setDisplayText(currentSentence.substring(0, displayText.length + 1));
+    }
+
+    let nextDelay = isDeleting ? deleteSpeed : typeSpeed;
+
+    if (!isDeleting && displayText === currentSentence) {
+      // Finished typing
+      if (phase === 'comeback') {
+        // Final sentence typed, wait then disappear permanently
+        nextDelay = pauseTime * 2;
+        animationStateRef.current.timeoutId = setTimeout(() => {
+          if (animationStateRef.current.isPaused) return;
+          setShowCursor(true);
+          setTimeout(() => {
+            if (animationStateRef.current.isPaused) return;
+            setComponentVisible(false);
+          }, 500);
+        }, nextDelay);
+        return;
+      } else {
+        // Start deleting after pause
+        nextDelay = pauseTime;
+        animationStateRef.current.timeoutId = setTimeout(() => {
+          if (animationStateRef.current.isPaused) return;
+          setIsDeleting(true);
+          animateText();
+        }, nextDelay);
+        return;
+      }
+    } else if (isDeleting && displayText === '') {
+      // Finished deleting current sentence
+      if (phase === 'initial') {
+        const newCompletedCount = completedSentences + 1;
+        setCompletedSentences(newCompletedCount);
+        
+        // Check if we've completed all required sentences
+        const totalSentencesNeeded = sentences.length * cycleCount;
+        if (newCompletedCount >= totalSentencesNeeded) {
+          // All cycles completed, disappear and prepare for comeback
+          setShowCursor(true);
+          setTimeout(() => {
+            if (animationStateRef.current.isPaused) return;
+            setComponentVisible(false);
+            setPhase('waiting');
+            
+            // Comeback after delay
+            setTimeout(() => {
+              if (animationStateRef.current.isPaused) return;
+              setPhase('comeback');
+              setComponentVisible(true);
+              setShowCursor(false);
+              setDisplayText('');
+              animateText();
+            }, comebackDelay);
+          }, 500);
+          return;
+        }
+        
+        // Move to next sentence
+        const nextIndex = (currentIndex + 1) % sentences.length;
+        setCurrentIndex(nextIndex);
+      }
+      
+      setIsDeleting(false);
+      nextDelay = 500;
+    }
+
+    animationStateRef.current.timeoutId = setTimeout(() => {
+      if (!animationStateRef.current.isPaused) {
+        animateText();
+      }
+    }, nextDelay);
+  };
+
+  useEffect(() => {
+    if (componentVisible && !animationStateRef.current.isPaused && (phase === 'initial' || phase === 'comeback')) {
+      const timeoutId = setTimeout(animateText, typeSpeed);
+      animationStateRef.current.timeoutId = timeoutId;
+    }
+
+    return () => {
+      if (animationStateRef.current.timeoutId) {
+        clearTimeout(animationStateRef.current.timeoutId);
+        animationStateRef.current.timeoutId = null;
+      }
+    };
+  }, [componentVisible, phase, currentIndex, displayText, isDeleting, completedSentences]);
+
+  if (!componentVisible) return null;
+
+  return (
+    <div className={`inline-block ${className}`}>
+      <span className="font-robert-small font-bold text-6xl text-[#2aafff] ">
+        {displayText}
+        
+      </span>
+    </div>
+  );
+};
+
 const Projects = ({ isActiveSection = false }) => {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [showCarousel, setShowCarousel] = useState(false);
   const [sectionRef, isInView] = useIntersectionObserver();
+  const [key, setKey] = useState(0);
+  
+  // NEW: Simpler timing approach using refs
+  const sectionActiveTimeRef = useRef(0); // Total time section has been active
+  const lastActiveStartRef = useRef(null); // When current active session started
+  const intervalRef = useRef(null);
+  const visibilityTimeoutRef = useRef(null);
+  const carouselTimeoutRef = useRef(null);
+  
+  // Animation thresholds
+  const VISIBILITY_THRESHOLD = 434;
+  const CAROUSEL_THRESHOLD = 15437;
+
+  // NEW: Function to update accumulated time and check thresholds
+  const updateTiming = () => {
+    if (lastActiveStartRef.current) {
+      const sessionTime = Date.now() - lastActiveStartRef.current;
+      const totalTime = sectionActiveTimeRef.current + sessionTime;
+      
+      // Check visibility threshold
+      if (!isVisible && totalTime >= VISIBILITY_THRESHOLD) {
+        setIsVisible(true);
+      }
+      
+      // Check carousel threshold
+      if (!showCarousel && totalTime >= CAROUSEL_THRESHOLD) {
+        setShowCarousel(true);
+      }
+    }
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -35,23 +221,59 @@ const Projects = ({ isActiveSection = false }) => {
       }
     }
 
-    // Start animations after component mounts
-     if (isActiveSection && !hasAnimated) {
-      setTimeout(() => setIsVisible(true),434);
-      // Show carousel after 3 seconds and mark as animated
-      setTimeout(() => {
-        setShowCarousel(true);
-        setHasAnimated(true);
-      }, 15627);
-    } else if (isActiveSection && hasAnimated) {
-      // If already animated, show immediately without animation
-      setIsVisible(true);
-      setShowCarousel(true);
+    // NEW: Handle timing with continuous tracking
+    if (isActiveSection) {
+      // Starting or resuming active session
+      if (!lastActiveStartRef.current) {
+        lastActiveStartRef.current = Date.now();
+      }
+      
+      // Start interval to check timing thresholds
+      intervalRef.current = setInterval(updateTiming, 100); // Check every 100ms
+      
+      // Immediate check in case thresholds are already met
+      updateTiming();
+      
     } else {
-      setIsVisible(false);
-      setShowCarousel(false);
+      // Section becoming inactive
+      if (lastActiveStartRef.current) {
+        // Add current session time to total accumulated time
+        const sessionTime = Date.now() - lastActiveStartRef.current;
+        sectionActiveTimeRef.current += sessionTime;
+        lastActiveStartRef.current = null;
+      }
+      
+      // Clear interval
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      
+      // Clear any pending timeouts
+      if (visibilityTimeoutRef.current) {
+        clearTimeout(visibilityTimeoutRef.current);
+        visibilityTimeoutRef.current = null;
+      }
+      if (carouselTimeoutRef.current) {
+        clearTimeout(carouselTimeoutRef.current);
+        carouselTimeoutRef.current = null;
+      }
     }
-  }, [isMuted, isActiveSection]);
+
+    // Cleanup function
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      if (visibilityTimeoutRef.current) {
+        clearTimeout(visibilityTimeoutRef.current);
+      }
+      if (carouselTimeoutRef.current) {
+        clearTimeout(carouselTimeoutRef.current);
+      }
+    };
+  }, [isMuted, isActiveSection, isVisible, showCarousel]); // NEW: Updated dependencies
+
   const toggleMute = () => {
     const video = videoRef.current;
     if (video && isActiveSection) {
@@ -60,6 +282,21 @@ const Projects = ({ isActiveSection = false }) => {
     }
   };
 
+  const restartDemo = () => {
+    setKey(prev => prev + 1);
+    // NEW: Reset all timing and state
+    sectionActiveTimeRef.current = 0;
+    lastActiveStartRef.current = null;
+    setIsVisible(false);
+    setShowCarousel(false);
+    
+    // Clear any running timers
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+  
   return (
     <section ref={sectionRef} id="projects" className="skills-container stack min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 transition-all duration-1000">
       <div>
@@ -83,17 +320,54 @@ const Projects = ({ isActiveSection = false }) => {
 
         {/* Projects Title */}
         <div className={`projects-header ${isVisible ? 'fade-in' : ''}`}>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 text-center">
-            My Projects
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-8 text-center">
+           <GradientText
+                            colors={[
+                              "#b03a00",
+                              "#8000ff",
+                              "#f79d00",                                         
+                              "#e8b31e",
+                              
+                              "#4c00ff",
+                            ]}
+                            animationSpeed={5}
+                            showBorder={false}
+                            className="custom-class font-robert-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold"
+                          >
+                           PROJECTS
+                          </GradientText>
           </h2>
         </div>
 
-        {/* Carousel Component - Only renders after 10 seconds */}
+        {/* Dynamic Typewriter Demo */}
+        <div className="flex flex-row items-center justify-between">
+        <div className="h-20 flex-col items-center justify-start w-1/3 pr-8 pl-8">
+          <DynamicTypewriter 
+            key={key}
+            sentences={[
+              
+              "Please hold while my portfolio does something cooler than a loading spinner",
+            ]}
+            finalSentence=""
+            typeSpeed={80}
+            deleteSpeed={2}
+            pauseTime={1500}
+            cycleCount={1}
+            comebackDelay={2000}
+            className="typewriter-text"
+            isVisible={isVisible}
+            isPaused={!isActiveSection} // NEW: Pass pause state
+          />
+        </div>
+        
+
+        {/* Carousel Component - Only renders after specified time */}
         {showCarousel && (
-          <div className="carousel-container carousel-slide-left w-full   relative z-10 px-8 pb-8">
+          <div className="carousel-container carousel-slide-left pl-5 w-2/3 relative z-10 px-8 pb-8">
             <Carousel />
           </div>
         )}
+        </div>
 
         {/* Mute/Unmute Button */}
         <button
@@ -130,6 +404,9 @@ const Projects = ({ isActiveSection = false }) => {
           <div className={`particle particle-11 ${isVisible ? 'particle-animate' : ''}`}></div>
           <div className={`particle particle-12 ${isVisible ? 'particle-animate' : ''}`}></div>
         </div>
+
+        {/* Restart Demo Button (optional) */}
+       
       </div>
     </section>
   );

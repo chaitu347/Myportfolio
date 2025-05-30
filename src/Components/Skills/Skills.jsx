@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useIntersectionObserver } from "../useIntersectionObserver.jsx";
+import GradientText from "../About/GradientText";
 import "./Skills.css";
 import "../../App.css";
 
@@ -70,6 +71,25 @@ const Skills = ({ isActiveSection = false }) => {
           <div className="gradient-overlay-left"></div>
           <div className="gradient-overlay-top"></div>
         </div>
+         <div className={`skills-header ${isVisible ? 'fade-in' : ''}`}>
+                  <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-8 text-center">
+                   <GradientText
+                                    colors={[
+                                     
+                                      "#f79d00",                                         
+                                      "#e8b31e",
+                                      "#b03a00",
+                                       "#4c00ff",
+                                      "#8000ff",
+                                    ]}
+                                    animationSpeed={5}
+                                    showBorder={false}
+                                    className="custom-class font-robert-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold"
+                                  >
+                                   SKILLS
+                                  </GradientText>
+                  </h2>
+                </div>
 
         {/* Skills Content */}
        
