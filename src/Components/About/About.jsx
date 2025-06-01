@@ -82,13 +82,13 @@ const About = () => {
               <div className="flex justify-start pt-2 sm:pt-3 md:pt-4">
                 <button
                   onClick={handleResumeDownload}
-                  className="bg-blue-tint hover:bg-blue-600 text-white font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-colors duration-300 ease-in-out"
+                  className="bg-blue-tint hover:bg-blue-600 text-white font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg px-4 py-0 sm:px-6 sm:py-3 rounded-lg transition-colors duration-300 ease-in-out"
                 >
                   Download Resume
                 </button>
               </div>
 
-              <div className="flex justify-center sm:justify-end pt-2 sm:pt-3 md:pt-4">
+              <div className="flex justify-center sm:justify-end ">
                 <span className="font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white">
                   -Bhargav Kundrapu
                 </span>
