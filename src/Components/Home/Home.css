@@ -47,7 +47,7 @@
 .navbar {
   position: relative;
   top: 15px;
-  left: 82%;
+  left: 80%;
   transform: translateX(-50%);
   z-index: 25;
   
@@ -565,6 +565,23 @@
 }
 
 @media (max-width: 480px) {
+.profile-circle {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  z-index: 26;
+  padding-left: 5px;
+  
+}
+
+.profile-image {
+  width: 58px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  filter: brightness(70%) contrast(100%);
+}
   .navbar{
     display:none;
   }
@@ -573,7 +590,7 @@
   }
   .profile-circle {
     
-    padding-left:1px;
+    padding-left:0px;
   }
   .welcome-text {
     font-size: 1rem;

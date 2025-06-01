@@ -51,7 +51,7 @@ const Home = ({ isActiveSection = false }) => {
   return (
     <section ref={sectionRef} id="home" className="header-container stack min-h-screen   bg-gradient-to-br from-blue-50 to-indigo-100 transition-all duration-1000">
       <div >
-          <div className="profile-circle">
+          <div className="profile-circle  md:pl-5 sm:pl-4">
             <img 
               src="https://res.cloudinary.com/dnbnst2wn/image/upload/v1748097749/Screenshot_2025-05-24_201046_fp7zfy.png"
               alt="Profile" 

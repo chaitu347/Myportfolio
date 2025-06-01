@@ -44,69 +44,7 @@
   transform: scale(1);
 }
 
-/* Add navbar container styles */
-.navbar {
-  position: relative;
-  top: 15px;
-  left: 65%;
-  transform: translateX(-50%);
-  z-index: 25;
-}
 
-/* Update profile circle styles */
-.profile-circle {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 26;
-  padding-left: 50px;
-}
-
-.profile-image {
-  width: 58px;
-  height: 55px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-size: cover;
-  filter: brightness(70%) contrast(100%);
-}
-
-/* Update topnav styles */
-.topnav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  height: 50px;
-  width: 900px;
-  padding: 0 25px;
-  background-color: transparent;
-  border-radius: 25px;
-  backdrop-filter: blur(10px);
-  white-space: nowrap;
-}
-
-.topnav a {
-  color: #e2e8f0;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.topnav a:hover {
-  background-color: rgba(99, 102, 241, 0.2);
-  color: #a78bfa;
-  transform: translateY(-1px);
-}
-
-.topnav a.active {
-  background-color: rgba(139, 92, 246, 0.3);
-  color: #c4b5fd;
-}
 
 .background-video {
   width: 100%;
