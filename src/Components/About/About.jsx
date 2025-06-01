@@ -13,11 +13,21 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
   const [sectionRef, isInView] = useIntersectionObserver();
 
+  const handleResumeDownload = () => {
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = 'https://drive.google.com/uc?export=download&id=1H4MpXZJF7O4p8WBNFZd4TKfSFTCcnZ-7'; // Replace with your resume file path
+    link.download = 'Bhargav_Kundrapu_Resume.pdf'; // Name for the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section ref={sectionRef} id="about" className="min-h-screen w-screen overflow-x-hidden stack">
       <div className="stacking-section min-h-screen w-full bg-[#000] flex flex-col md:flex-row items-center justify-center py-4 sm:py-6 md:py-8 lg:py-0">
         {/* left part */}
-        <div className="brightness-50 order-2 md:order-1 w-full h-48 sm:h-64 lg:w-1/2 md:h-80 lg:h-96 xl:w-1/2 xl:h-4/5 flex flex-col items-center justify-center md:justify-end px-2 sm:px-4">
+        <div className="brightness-50  md:order-1 w-full h-48 sm:h-64 lg:w-1/2 md:h-80 lg:h-96 xl:w-1/2 xl:h-4/5 flex flex-col items-center justify-center md:justify-end px-2 sm:px-4">
           <img 
             src="https://res.cloudinary.com/dnbnst2wn/image/upload/v1748281650/photo_jkc3j1.jpg" 
             alt="profilepic" 
@@ -67,6 +77,16 @@ const About = () => {
                 <span className="text-blue-tint">My philosophy is simple-</span>{" "}
                 every line of code should tell a story, every interaction should spark joy, and every application should feel less like software and more like magic. Whether I'm optimizing database queries at 2 AM or sketching wireframes over morning coffee, I'm always chasing that perfect moment when technology becomes invisible and user delight takes center stage.
               </p>
+
+              {/* Resume Download Button */}
+              <div className="flex justify-start pt-2 sm:pt-3 md:pt-4">
+                <button
+                  onClick={handleResumeDownload}
+                  className="bg-blue-tint hover:bg-blue-600 text-white font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg px-4 py-2 sm:px-6 sm:py-3 rounded-lg transition-colors duration-300 ease-in-out"
+                >
+                  Download Resume
+                </button>
+              </div>
 
               <div className="flex justify-center sm:justify-end pt-2 sm:pt-3 md:pt-4">
                 <span className="font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white">

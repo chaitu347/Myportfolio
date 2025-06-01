@@ -135,7 +135,7 @@
 .skills-visible .skills-section-title {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 1s;
+  transition-delay: 3s;
 }
 
 .frontend-title {
@@ -266,74 +266,74 @@
 .skills-visible .frontend-skill.skill-item-1 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 3s;
+  transition-delay: 4.2s;
 }
 
 .skills-visible .frontend-skill.skill-item-2 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 4.2s;
+  transition-delay: 5.4s;
 }
 
 .skills-visible .frontend-skill.skill-item-3 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 5.4s;
+  transition-delay: 6.6s;
 }
 
 .skills-visible .frontend-skill.skill-item-4 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 6.6s;
+  transition-delay: 7.8s;
 }
 
 .skills-visible .frontend-skill.skill-item-5 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 7.8s;
+  transition-delay: 9s;
 }
 
 .skills-visible .frontend-skill.skill-item-6 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 9s;
+  transition-delay: 10.2s;
 }
 
 /* Animation delays for backend skills */
 .skills-visible .backend-skill.skill-item-1 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 3s;
+  transition-delay: 4.2s;
 }
 
 .skills-visible .backend-skill.skill-item-2 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 4.2s;
+  transition-delay: 5.4s;
 }
 
 .skills-visible .backend-skill.skill-item-3 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 5.4s;
+  transition-delay: 6.6s;
 }
 
 .skills-visible .backend-skill.skill-item-4 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 6.6s;
+  transition-delay: 7.8s;
 }
 
 .skills-visible .backend-skill.skill-item-5 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 7.8s;
+  transition-delay: 9s;
 }
 
 .skills-visible .backend-skill.skill-item-6 {
   opacity: 1;
   transform: translateX(0);
-  transition-delay: 9s;
+  transition-delay: 10.2s;
 }
 
 /* SKILL LOGO – INCREASED SIZE */
@@ -600,9 +600,9 @@
 }
 
 /* Mute Button Styles – NOT CHANGED */
-.skill-container .mute-button {
+.mute-buttonz {
   position: absolute;
-  bottom: 2rem;
+  bottom: 90%;
   right: 2rem;
   width: 50px;
   height: 50px;
@@ -613,32 +613,39 @@
   color: white;
   cursor: pointer;
   z-index: 20;
-  opacity: 0;
-  transform: scale(0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: scale(1);
   transition: all 0.3s ease;
 }
-
-.skill-container.mute-button.button-appear {
+.mute-buttonz.button-appear {
   opacity: 1;
   transform: scale(1);
 }
 
-.skill-container.mute-button:hover {
+.mute-buttonz.button-hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.mute-buttonz:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
 }
 
-.skill-container.mute-button:disabled {
+.mute-buttonz:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.skill-container.mute-icon,
-.skill-container.unmute-icon {
+.mute-icon,
+.unmute-icon {
   width: 24px;
   height: 24px;
 }
-
 /* Particles Container */
 .particles-container {
   position: absolute;

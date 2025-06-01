@@ -96,12 +96,18 @@ const Skills = ({ isActiveSection = false }) => {
         }
         
         // Start or resume animation sequence
-        if (!animationCompleted || animationPaused) {
-          startAnimationSequence();
-        } else {
-          // If animations already completed and not paused, show immediately
-          setIsVisible(true);
-        }
+        // Start or resume animation sequence
+if (!animationCompleted || animationPaused) {
+  startAnimationSequence();
+} else {
+  // If animations already completed and not paused, show immediately
+  setIsVisible(true);
+}
+
+// Ensure button visibility for immediate user interaction
+if (!isVisible && animationCompleted) {
+  setIsVisible(true);
+}
       } else {
         // Section is not active or not in view - pause video and animation
         if (!video.paused) {
@@ -247,6 +253,7 @@ const Skills = ({ isActiveSection = false }) => {
             </GradientText>
           </h2>
         </div>
+        
 
         {/* Skills Content */}
         <div className={`skills-sections ${(isVisible || animationCompleted) ? "skills-visible" : ""}`}>
@@ -290,12 +297,15 @@ const Skills = ({ isActiveSection = false }) => {
         </div>
 
         {/* Mute/Unmute Button - Only show when section is active and in view */}
-        {isActiveSection && isInView && (
-          <button
-            className={`mute-button ${isVisible ? "button-appear" : ""}`}
-            onClick={toggleMute}
-            aria-label={isMuted ? "Unmute video" : "Mute video"}
-          >
+       
+{/* Mute/Unmute Button - Show when section is active and in view */}
+{/* Mute/Unmute Button - Show when section is active and in view */}
+{isActiveSection && isInView && (
+  <button
+    className={`mute-buttonz ${isVisible ? "button-appear" : "button-hidden"}`}
+    onClick={toggleMute}
+    aria-label={isMuted ? "Unmute video" : "Mute video"}
+  >
             {isMuted ? (
               <svg
                 className="mute-icon"
@@ -323,8 +333,8 @@ const Skills = ({ isActiveSection = false }) => {
                 <path d="M15.199 3.199a.75.75 0 011.06 0A8.5 8.5 0 0118.5 10a8.5 8.5 0 01-2.241 5.801.75.75 0 11-1.06-1.06A7 7 0 0017.5 10a7 7 0 00-2.301-5.199.75.75 0 010-1.06z" />
               </svg>
             )}
-          </button>
-        )}
+          </button>)}
+        
 
         {/* Floating Particles */}
         <div className="particles-container">
