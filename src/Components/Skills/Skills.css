@@ -818,7 +818,7 @@
 /* Laptop – 1366px to 1599px */
 @media (min-width: 1366px) and (max-width: 1599px) {
   .skills-sections {
-    padding: 2rem 3rem;
+    padding: 1px;
     gap: 3rem;
   }
 
