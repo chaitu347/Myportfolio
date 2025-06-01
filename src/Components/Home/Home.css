@@ -47,7 +47,7 @@
 .navbar {
   position: relative;
   top: 15px;
-  left: 65%;
+  left: 82%;
   transform: translateX(-50%);
   z-index: 25;
   
@@ -78,7 +78,7 @@
   justify-content: center;
   gap: 30px;
   height: 50px;
-  width: 900px;
+  width: 500px;
   padding: 0 25px;
   background-color:transparent;
   border-radius: 25px;
@@ -521,32 +521,10 @@
   }
 }
 
-@media (max-width: 1700px) {
-  .hero-content {
-    padding-left: 1.5rem;
-    
+@media (min-width: 1600px) {
+  .mute-button {
+    right: max(35px, calc((100vw - 1600px) / 2 + 35px));
   }
-  
-  .welcome-text {
-    font-size: 1.5rem;
-  }
-  
-  .name-text {
-    font-size: 3rem;
-  }
-  
-  .your-next-text {
-    font-size: 1.5rem;
-  }
-  
-  .developer-text {
-    font-size: 2.5rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.125rem;
-  }
- 
 }
 
 @media (max-width: 768px) {
