@@ -1,55 +1,49 @@
 import React, { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectCard from "./ProjectCards";
-import aethercore from "../../assets/aethercore.png";
-import ecom from "../../assets/ecom.png";
-import iphone from "../../assets/iphone.png";
-import password from "../../assets/password.png";
-import spotify from "../../assets/spotify.png";
-import todo from "../../assets/todo.png";
-import studysync from "../../assets/studysync.png";
-import simonsays from "../../assets/simonsays.png";
+
 
 const pro = [
   {
-    image: aethercore,
-    title: "AetherCore - FrontEnd",
+    image: "https://res.cloudinary.com/dnbnst2wn/image/upload/v1748797641/WhatsApp_Image_2025-06-01_at_22.26.23_b7a1d984_hv6yjo.jpg",
+    title: "Ooty travels - FrontEnd",
     description:
-      "Futuristic gaming AI Web3 site with GSAP, Three.js 3D, & React-Tailwind UI",
-    demoLink: "https://vishvjeet-rana.github.io/AetherCore-GamingAI-Site/",
+      "Your complete Ooty travel companion offering reliable cab services, curated tour packages, expert local guides, and personalized sightseeing experiences in the Queen of Hill Stations.",
+    demoLink: "https://ootytravels1-1.vercel.app/",
     codeLink: "https://github.com/Vishvjeet-Rana/AetherCore-GamingAI-Site",
   },
   {
-    image: iphone,
-    title: "3D iPhone showcase - FrontEnd",
+    image: "https://res.cloudinary.com/dnbnst2wn/image/upload/v1748797641/WhatsApp_Image_2025-06-01_at_22.26.22_8b5ee488_dlw0zr.jpg",
+    title: "Nxttrendz- E-commerce clone",
     description:
-      "Stunning iPhone15 Pro site with GSAP, Three.js 3D model, & React-Tailwind UI",
-    demoLink: "https://vishvjeet-rana.github.io/iPhone15-Website-Three.js/",
+      "A modern ecommerce platform featuring product browsing, shopping cart functionality, and seamless online shopping experience with contemporary design and user-friendly interface.",
+    demoLink: " http://nxttrendxkbs6.ccbp.tech/",
     codeLink: "https://github.com/Vishvjeet-Rana/iPhone15-Website-Three.js",
   },
   {
-    image: password,
-    title: "Password Generator",
+    image: "https://res.cloudinary.com/dnbnst2wn/image/upload/v1748797641/WhatsApp_Image_2025-06-01_at_22.26.22_6a183f50_gfrj8y.jpg",
+    title: "Wikipedia Clone - Frontend,API's",
     description:
-      "Secure and customizable password generator built with React and Tailwind CSS.",
-    demoLink: "https://vishvjeet-rana.github.io/password-generator-reactjs/",
+      "A Wikipedia-inspired knowledge platform offering organized article browsing, search functionality, and structured information display for seamless learning and research.",
+    demoLink: " http://wikepediaclone.ccbp.tech/",
     codeLink: "https://github.com/Vishvjeet-Rana/password-generator-reactjs",
   },
   {
-    image: studysync,
-    title: "StudySync - FrontEnd",
+    image: "https://res.cloudinary.com/dnbnst2wn/image/upload/v1748797986/WhatsApp_Image_2025-06-01_at_22.42.55_b3540498_zyyhnc.jpg",
+    title: "TodoList",
     description:
-      "Seamless learning platform with an interactive and modern UI.",
-    demoLink: "https://vishvjeet-rana.github.io/Study-Sync-Responsive/",
+      "A clean and intuitive todo list application for organizing daily tasks, tracking progress, and boosting productivity with user-friendly task management features.",
+    demoLink: "http://maketoday.ccbp.tech/ ",
     codeLink: "https://github.com/Vishvjeet-Rana/Study-Sync-Responsive",
   },
   {
-    image: spotify,
-    title: "Spotify Landing Page",
-    description: "Stylish Spotify landing page with an engaging UI.",
-    demoLink: "https://vishvjeet-rana.github.io/Spotify-Landing-Page-Static-/",
+    image: "https://res.cloudinary.com/dnbnst2wn/image/upload/v1748797641/WhatsApp_Image_2025-06-01_at_22.26.23_0cb05410_yoqmbl.jpg",
+    title: "Foodmunch website",
+    description: "A comprehensive food discovery platform showcasing restaurant dishes, social dining experiences.",
+    demoLink: "https://foodhandiness.ccbp.tech/",
     codeLink: "https://github.com/Vishvjeet-Rana/Spotify-Landing-Page-Static-",
   },
+  /*
   {
     image: todo,
     title: "Todo List",
@@ -72,7 +66,7 @@ const pro = [
       "Classic Simon Says game with interactive and engaging gameplay.",
     demoLink: "https://vishvjeet-rana.github.io/Simon-Says-Game/",
     codeLink: "https://github.com/Vishvjeet-Rana/Simon-Says-Game",
-  },
+  },*/
 ];
 
 const Carousel = () => {
