@@ -7,14 +7,14 @@ const ContactInfo = () => {
     {
       icon: <FiMail />,
       label: 'Email',
-      value: 'info@yourcompany.com',
-      link: 'mailto:info@yourcompany.com'
+      value: 'chaitu347347@gmail.com',
+      link: 'mailto:chaitu347347@gmail.com'
     },
     {
       icon: <FiPhone />,
       label: 'Phone',
-      value: '+91 98765 43210',
-      link: 'tel:+919876543210'
+      value: '+91 9550668883',
+      link: 'tel:+919550668883'
     },
     {
       icon: <FiMapPin />,

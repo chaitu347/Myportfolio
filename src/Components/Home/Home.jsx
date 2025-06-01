@@ -97,7 +97,7 @@ const Home = ({ isActiveSection = false }) => {
             {/* Line 2 - Name */}
             <div className={`text-line line-2 ${isInView ? 'slide-in' : ''}`}>
               <h1 className="name-text">
-                BHARGAV'S
+                CHAITANYA'S
                 <span className="world-text">WORLD</span>
               </h1>
             </div>

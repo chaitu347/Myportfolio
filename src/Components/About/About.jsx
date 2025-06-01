@@ -16,8 +16,8 @@ const About = () => {
   const handleResumeDownload = () => {
     // Create a temporary link element
     const link = document.createElement('a');
-    link.href = 'https://drive.google.com/uc?export=download&id=1H4MpXZJF7O4p8WBNFZd4TKfSFTCcnZ-7'; // Replace with your resume file path
-    link.download = 'Bhargav_Kundrapu_Resume.pdf'; // Name for the downloaded file
+    link.href = 'https://drive.google.com/file/d/1cyMK9N1NepQ6_KDg_MkxZ6I7QwhazX8M/view?usp=drive_link'; // Replace with your resume file path
+    link.download = 'MERUGULA_CHAITANYA.pdf'; // Name for the downloaded file
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -63,7 +63,7 @@ const About = () => {
             <div className="flex-col items-start justify-start space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-6">
               <p className="font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-metallic-gray leading-snug sm:leading-normal md:leading-relaxed">
                 Greetings! I'm{" "}
-                <span className="text-blue-tint">Bhargav Kundrapu</span> a Digital Experience Architect who thrives on transforming wild ideas into interactive realities.
+                <span className="text-blue-tint">MERUGULA CHAITANYA</span> a Digital Experience Architect who thrives on transforming wild ideas into interactive realities.
               </p>
 
               <p className="font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-metallic-gray leading-snug sm:leading-normal md:leading-relaxed">
@@ -90,7 +90,7 @@ const About = () => {
 
               <div className="flex justify-center sm:justify-end ">
                 <span className="font-robert-medium text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white">
-                  -Bhargav Kundrapu
+                  -MERUGULA CHAITANYA
                 </span>
               </div>
             </div>
