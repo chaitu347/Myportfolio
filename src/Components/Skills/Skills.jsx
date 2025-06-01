@@ -153,7 +153,7 @@ const Skills = ({ isActiveSection = false }) => {
       color: "#7952B3",
     },
     {
-      name: "Tailwind CSS",
+      name: "Tailwind",
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
       color: "#06B6D4",
     },
@@ -163,7 +163,7 @@ const Skills = ({ isActiveSection = false }) => {
       color: "#F7DF1E",
     },
     {
-      name: "React JS",
+      name: "ReactJS",
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
       color: "#61DAFB",
     },

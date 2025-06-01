@@ -1040,8 +1040,8 @@
   }
 
   .skill-logo {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 
   .skills-grid {
@@ -1076,7 +1076,7 @@
   }
 
   .skills-section {
-    max-width: 48%;
+    max-width: 55%;
     width: 48%;
   }
   .skill-item{
@@ -1097,8 +1097,8 @@
   }
 
   .skill-logo {
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     padding: 2px;
   }
 
