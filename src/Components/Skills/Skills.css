@@ -178,6 +178,7 @@
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   width: 100%;
+  
 }
 
 /* Dynamic background colors based on skill color */
@@ -829,6 +830,7 @@
 
   .skill-item {
     padding: 1rem 1.2rem;
+    height: 61px;
   }
 
   .skill-name {
