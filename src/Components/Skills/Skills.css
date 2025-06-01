@@ -23,7 +23,7 @@
 .skills-header {
   position: relative;
   z-index: 10;
-  padding: 2rem 0;
+  padding:  0;
 }
 
 /* Video Background Styles */
@@ -99,7 +99,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 2rem 4rem;
+  padding: 1px;
   height: calc(100vh - 200px);
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -160,7 +160,7 @@
   align-items: center;      /* center horizontally */
   width: 100%;              
   max-width: 280px;          /* bumped max-width slightly */
-  margin: 0 auto;            /* center the grid */
+  margin: 0 auto ;            /* center the grid */
 }
 
 /* SKILL ITEM – UNIFORM WIDTH, INCREASED LOGO & NAME SIZE */
