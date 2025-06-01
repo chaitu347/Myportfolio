@@ -17,6 +17,7 @@
 .skills-container {
   width: 100vw;
   height: 100vh;
+  overflow: hidden ;
 }
 
 .skills-header {
@@ -1076,7 +1077,7 @@
   }
 
   .skills-section {
-    max-width: 55%;
+    max-width: 48%;
     width: 48%;
   }
   .skill-item{
@@ -1105,7 +1106,7 @@
   .skills-grid {
     gap: 0.5rem;
     padding: 0.7rem 0.8rem;
-    width: 90%;
+    width: 100%;
     max-width: 200px;
   }
 
