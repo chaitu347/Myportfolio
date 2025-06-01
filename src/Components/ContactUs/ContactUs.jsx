@@ -8,6 +8,7 @@ import { IoLogoLinkedin } from "react-icons/io5";
 import GradientText from "../About/GradientText";
 import ContactForm from "./ContactForm.jsx";
 import "./ContactUs.css";
+import ContactInfo from './ContactInfo';
 import "../../App.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -110,6 +111,7 @@ const ContactUs = ({ isActiveSection = false }) => {
         {/* Content wrapper for responsive positioning */}
         <div className="contact-content-wrapper">
           <ContactForm />
+          <ContactInfo />
         </div>
       </div>
     </section>
