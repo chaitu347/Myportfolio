@@ -16,7 +16,7 @@ const About = () => {
   const handleResumeDownload = () => {
     // Create a temporary link element
     const link = document.createElement('a');
-    link.href = 'https://drive.google.com/file/d/1cyMK9N1NepQ6_KDg_MkxZ6I7QwhazX8M/view?usp=drive_link'; // Replace with your resume file path
+    link.href = 'https://drive.google.com/file/d/16gUipx60sqdHe0VfkAl1wCXGSA7A3t7n/view?usp=drive_link'; // Replace with your resume file path
     link.download = 'MERUGULA_CHAITANYA.pdf'; // Name for the downloaded file
     document.body.appendChild(link);
     link.click();
